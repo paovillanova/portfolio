@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMSantamarta | Portfolio</title>
+
+<!-- <script src="canvas2.js"></script> -->
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Anton&family=Space+Grotesk:wght@300;500&family=Handjet&family=Coral+Pixels&display=swap" rel="stylesheet">
+
+
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#000;
+  color:#fff;
+  font-family:'Space Grotesk', sans-serif;
+  overflow-x:hidden;
+}
+
+@font-face {
+  font-family: 'highfont';
+  src: url('fonts/highfont.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.main-content{
+  position: relative;
+  z-index: 2;
+  border: 10px solid yellow;
+}
+
+.footer{
+  width: 100%;
+  height: 100px;
+  back
+  padding: 50px;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  --s: 72px; /* control the size*/
+  --c1: #1a1a1a;
+  --c2: #000000;
+  
+  --_g: #0000 52%,var(--c1) 54% 57%,#0000 59%; 
+  background: 
+   radial-gradient(farthest-side at -33.33% 50%,var(--_g)) 0 calc(var(--s)/2),
+   radial-gradient(farthest-side at 50% 133.33%,var(--_g)) calc(var(--s)/2) 0,
+   radial-gradient(farthest-side at 133.33% 50%,var(--_g)),
+   radial-gradient(farthest-side at 50% -33.33%,var(--_g)),
+   var(--c2);
+  background-size: calc(var(--s)/4.667) var(--s),var(--s) calc(var(--s)/4.667);
+
+}
+
+.footer p{
+  position:absolute;
+  bottom:25px;
+  left:5%;
+  font-family:'Handjet', cursive;
+  font-size:1em;
+  color:#fff;
+  z-index:3;
+  pointer-events:none;
+
+}
+
+/* HERO */
+
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  background:#000;
+  cursor: url('cursors/cursor-home.png') 16 16, auto;
+}
+
+#gridCanvas{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:0;
+}
+
+.hero h1{
+  font-family:'Pixelify Sans', monospace;
+  font-size:8vw;
+  letter-spacing:2px;
+  position:relative;
+  z-index:2; 
+  color:#fff;
+    cursor: none;
+}
+
+.hero p{
+  margin-top:20px;
+  font-size:1.2rem;
+  opacity:0.8;
+  position:relative;
+  z-index:2;
+}
+
+/* SECTIONS */
+
+section{
+  height: auto;
+  min-height:10vh;
+  padding:0vh 0vw;
+  position:relative;
+  display:flex;
+  flex-direction: column;
+  
+  margin-left: 5px;
+    margin-right: 5px;
+    /* border: solid 1px lightcyan; */
+}
+
+/* Cursor personalizado por sección */
+.section-3d{ cursor: url('cursors/cursor-3d.png') 16 16, auto; }
+.section-video{ cursor: url('cursors/cursor-video.png') 16 16, auto; }
+.section-design{ cursor: url('cursors/cursor-design.png') 16 16, auto; }
+.section-about{ cursor: url('cursors/cursor-about.png') 16 16, auto; }
+
+/* TITULOS SECCIONES */
+
+.title-band{
+  position:relative;
+  top:0%;
+  left:0;
+  width:100%;
+  height:12vw;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  z-index:1;
+  background:#111;
+  /* border: double 2px lightcyan; */
+}
+
+/* PATRONES POR SECCION */
+
+.section-3d .title-band::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  opacity: 0.8;
+  background-color: #353434;
+  opacity: 0.8;
+  background-image:  linear-gradient(#111 2px, transparent 2px), linear-gradient(90deg, #111 2px, transparent 2px), linear-gradient(#111 1px, transparent 1px), linear-gradient(90deg, #111 1px, #353434 1px);
+  background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
+.section-video .title-band::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-image: radial-gradient(rgba(255,255,255,0.15) 2px, transparent 2px);
+  background-size:16px 16px;
+}
+.section-design .title-band::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+background-color: #050505;
+opacity: 0.8;
+background-image: linear-gradient(-45deg, #050505, #050505 50%, #353434 50%, #353434);
+background-size: 8px 8px;
+}
+.section-about .title-band::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 1px, transparent 2px, transparent 5px);
+}
+
+/* TITULOS */
+
+.section-title{
+  position:relative;
+  font-family:'Anton', sans-serif;
+  font-size:12vw;
+  white-space:nowrap;
+  transform:translateX(-100%);
+  transition:transform 0.3s ease-out;
+  z-index:2;
+  text-align: left;
+  padding-left:5vw;
+  /* border: dotted 2px red; */
+}
+
+/* TEXTOS TITULOS */
+
+.section-text{
+  position:absolute;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  font-family:'Handjet', cursive;
+  font-size:1.5rem;
+  color:#fff;
+  z-index:3;
+  pointer-events:none; /* para que no interfiera con hover de imágenes */
+  /* border: dotted 2px darkmagenta; */
+}
+
+/* CONTENT */
+
+.content{
+  padding-top: 40px;
+  padding-bottom: 60px;
+  height: auto;
+  position:relative;
+  top: 0vw;
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+  /* border: dotted 5px floralwhite; */
+  opacity: 0.9;
+  background-image:  linear-gradient(#161616 0.8px, transparent 0.8px), linear-gradient(to right, #161616 0.8px, #000000 0.8px);
+  background-size: 16px 16px;
+}
+
+.general-text{
+  padding-right: 10%;
+  padding-left: 10%;
+  width: auto;
+  font-size:1.2rem;
+  line-height:1.6;
+  opacity:0.85;
+  margin-top:50px;
+  margin-bottom:50px;
+  text-align:center;
+  font-family:'Handjet', cursive;
+}
+
+/* SECCION 3D */
+
+.gallery-3d {
+  width: 60%;
+  margin-bottom: 30px;
+  /* flex: 1; */
+  /*  border: dotted 2px yellow; */
+}
+
+.gallery-3d img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+
+
+  --border-angle: 0turn;
+  --main-bg: conic-gradient(
+      from var(--border-angle),
+      #213,
+      #112 5%,
+      #112 60%,
+      #213 95%
+    );
+
+  border: solid 2px transparent;
+  border-radius: 2px;
+
+  --gradient-border: conic-gradient(
+      from var(--border-angle),
+      transparent 25%,
+      #000,
+      #fff 99%,
+      transparent
+    );
+
+  background:
+    var(--main-bg) padding-box,
+    var(--gradient-border) border-box,
+    var(--main-bg) border-box;
+
+  background-position: center center;
+
+  animation: bg-spin 20s linear infinite;
+}
+
+.box:hover {
+  animation-play-state: paused;
+}
+
+@keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
+
+.btn-productos {
+  position: relative;
+  padding: 14px 40px;
+  background: #111;
+  color: white;
+  border: 1px solid #333;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.btn-productos span {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.4s ease;
+}
+
+/* Línea animada */
+.btn-productos::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.3),
+    transparent
+  );
+  transition: all 0.6s ease;
+}
+
+/* Glow */
+.btn-productos::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Hover */
+.btn-productos:hover {
+  border-color: white;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.btn-productos:hover::before {
+  left: 100%;
+}
+
+.btn-productos:hover::after {
+  opacity: 1;
+}
+
+.btn-productos:hover span {
+  transform: translateY(-2px);
+}
+
+
+/* VIDEO SECTION CONTENT */
+
+.video-wrapper {
+
+  margin-top: 30px;
+  width: 70%;
+  aspect-ratio: 16 / 9;
+  background-color: #050505;
+opacity: 0.8;
+  padding: 15px;
+background-size: 8px 8px;
+background-image: repeating-linear-gradient(45deg, #353434 0, #353434 0.8px, #050505 0, #050505 50%);
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 2px solid black;
+}
+
+/* DESIGN SECTION CONTENT */
+
+/* .section-design .section-title{
+  font-family:'Coral Pixels', monospace;
+} */
+
+.design-custom-text {
+    width: 100%;
+  font-family:'Coral Pixels', monospace;
+  font-size: 28px;
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+      border: solid 1px green;
+      float: none;
+}
+
+.design-layout {
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+
+      /* border: dotted 2px green; */
+}
+
+.personaje-wrapper {
+  width: 70%;
+  overflow: hidden;
+  margin: 0 auto;
+  border-bottom: dashed 1px floralwhite;
+      /* border: dotted 2px green; */
+}
+
+.design-hero img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+    border: solid 1px hotpink;
+}
+
+.design-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+    justify-content:center;
+  align-items:center;
+
+
+
+}
+
+.design-left {
+
+  width: 70%;
+}
+
+.design-right {
+  padding-top: 20px;
+             
+  width: 70%;
+
+  padding: 15px;
+background-size: 8px 8px;
+background-image: repeating-linear-gradient(45deg, #353434 0, #353434 0.8px, #050505 0, #050505 50%);
+
+      /*  border: dotted 2px yellow; */
+}
+
+.scroll-wrapper-1 {
+  overflow: hidden;
+  width: 100%;
+  height: 102px;
+  margin-bottom: 4px;
+  position: relative;
+            /*  border: dotted 2px red; */
+
+}
+
+.scroll-track-1 {
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+          /*  border: dotted 4px yellowgreen; */
+              will-change: transform;
+
+}
+
+.scroll-track-1 img {
+  position: absolute;
+  height: auto;
+  width: 100%;
+  margin-right: 0px;
+  object-fit: fill;
+  image-rendering: auto;
+  backface-visibility: hidden;
+     animation: scrollLeft 40s linear infinite;
+
+            /*  border: solid 2px magenta; */
+
+}
+
+.scroll-track-1 img:nth-child(1) {
+  left: 0%;
+
+}
+
+.scroll-track-1 img:nth-child(2) {
+  left: 100%;
+ 
+}
+
+.scroll-track-1 img:nth-child(3) {
+  left: 200%;
+
+}
+
+.scroll-track-1 img:nth-child(4) {
+  left: 300%;
+
+}
+
+
+@keyframes scrollLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-300%);
+  }
+}
+
+
+
+.scroll-wrapper-2 {
+  overflow: hidden;
+  width: 100%;
+  height: 415px;
+  margin-bottom: 4px;
+  position: relative;
+  padding-bottom: 20px;
+              border-bottom: dashed 1px floralwhite; 
+             
+
+background-color: #000000;
+opacity: 0.9;
+background: radial-gradient(circle, transparent 20%, #000000 20%, #000000 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #000000 20%, #000000 80%, transparent 80%, transparent) 20px 20px, linear-gradient(#2c2c2c 1.6px, transparent 1.6px) 0 -0.8px, linear-gradient(90deg, #2c2c2c 1.6px, #000000 1.6px) -0.8px 0;
+background-size: 40px 40px, 40px 40px, 20px 20px, 20px 20px;
+
+}
+
+.scroll-track-2 {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /*  border: dotted 4px yellowgreen; */
+  will-change: transform;
+}
+
+.scroll-track-2 img {
+  position: absolute;
+  height: auto;
+  width: 100%;
+  margin-right: 0px;
+  object-fit: fill;
+  image-rendering: auto;
+  backface-visibility: hidden;
+     animation: scrollRight 300s linear infinite;
+
+            /*  border: solid 2px magenta; */
+
+}
+
+.scroll-track-2 img:nth-child(1) {
+  left: 0%;
+
+}
+
+.scroll-track-2 img:nth-child(2) {
+  left: -100%;
+ 
+}
+
+.scroll-track-2 img:nth-child(3) {
+  left: -200%;
+
+}
+
+.scroll-track-2 img:nth-child(4) {
+  left: -300%;
+
+}
+
+.scroll-track-2 img:nth-child(5) {
+  left: -400%;
+
+}
+
+.scroll-track-2 img:nth-child(6) {
+  left: -500%;
+
+}
+
+.scroll-track-2 img:nth-child(7) {
+  left: -600%;
+
+}
+
+.scroll-track-2 img:nth-child(8) {
+  left: -700%;
+
+}
+
+.scroll-track-2 img:nth-child(9) {
+  left: -800%;
+
+}
+
+.scroll-track-2 img:nth-child(10) {
+  left: -900%;
+
+}
+
+.scroll-track-2 img:nth-child(11) {
+  left: -1000%;
+
+}
+
+.scroll-track-2 img:nth-child(12) {
+  left: -1100%;
+
+}
+
+.scroll-track-2 img:nth-child(13) {
+  left: -1200%;
+
+}
+
+.scroll-track-2 img:nth-child(14) {
+  left: -1300%;
+
+}
+
+@keyframes scrollRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(1300%);
+  }
+}
+
+.design-left-bottom img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+
+}
+
+.design-right img {
+  width: 100%;
+  height: 42%;
+  object-fit: cover;
+  display: block;
+    background-color: #000000;
+background-image:  linear-gradient(#161616 0.8px, transparent 0.8px), linear-gradient(to right, #161616 0.8px, #000000 0.8px);
+background-size: 16px 16px;
+border: solid 3px black;
+}
+
+  .player {
+    position: relative;
+    bottom: 0px;
+
+    width: 35px;
+    height: 35px;
+
+    background-image: url("img/runnin_spritesheet_horizontal.png"); /* cambia la ruta */
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+        /*  border: dotted 2px limegreen; */
+
+    /* Animación del spritesheet */
+    animation: 
+      play 1s steps(14) infinite,
+      move 40s linear infinite;
+  }
+
+  /* Animación de frames */
+  @keyframes play {
+    from {
+      background-position: 0px;
+    }
+    to {
+      background-position: -490px;
+    }
+  }
+
+  /* Movimiento de izquierda a derecha */
+  @keyframes move {
+    from {
+      left: -35px; /* empieza fuera de la pantalla */
+    }
+    to {
+      left: 100%; /* sale completamente por la derecha */
+    }
+  }
+
+
+
+/* ===== SECCION ABOUT ===== */
+
+.content-about{
+  padding-top: 40px;
+  padding-bottom: 60px;
+  padding-right: 60px;
+  padding-left: 60px;
+  height: auto;
+  position:relative;
+  top: 0vw;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+     /* border: dotted 5px floralwhite; */
+}
+
+.image-stack{
+  position:relative;
+  width:420px;
+  height:420px;
+}
+
+.image-stack img{
+  position:absolute;
+  width:100%;
+  mix-blend-mode:screen;
+  filter:grayscale(100%);
+  transition:0.5s ease;
+}
+
+.image-stack img:nth-child(1){
+  transform:translate(-30px,-20px) rotate(-6deg);
+}
+.image-stack img:nth-child(2){
+  transform:translate(25px,25px) rotate(6deg);
+}
+.image-stack:hover img{
+  transform:translate(0,0) rotate(0deg) scale(1.05);
+}
+
+.about-row{
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+
+  margin-top:10px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction: column;
+
+}
+
+.about-container{
+  display: grid;
+  grid-template-columns:
+  repeat(auto-fit, minmax(min(100%, 700px), 1fr)) ;
+  gap: 0.5rem;
+
+
+
+}
+
+.backup{
+  padding: 2px;
+  width: 70%;
+  margin-top:10px;
+  gap: 60px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border: solid 2px yellow;
+
+}
+
+.about-wrapper{
+  padding-right: 20px;
+  padding-left: 20px;
+  width: 100%;
+  font-size:1.2rem;
+  line-height:1.6;
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  
+}
+
+.about-text{
+  padding-right: 20px;
+  padding-left: 20px;
+  width: auto;
+  font-size:1.2rem;
+  line-height:1.6;
+  opacity:0.85;
+  margin-top:0;
+  text-align:center;
+  font-family:'Handjet', cursive;
+
+}
+
+
+.about-wrapper img{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  background-color: #000000;
+  background-image:  linear-gradient(#161616 0.8px, transparent 0.8px), linear-gradient(to right, #161616 0.8px, #000000 0.8px);
+  background-size: 16px 16px;
+  border: solid 3px black;
+
+  padding: 15px;
+  background-size: 8px 8px;
+  background-image: repeating-linear-gradient(45deg, #353434 0, #353434 0.8px, #050505 0, #050505 50%);
+}
+
+/* ===== SKILLS RETRO PIXEL GAMEBOY ===== */
+.skills-section{
+padding-right: 60px;
+  padding-left: 60px;
+  margin-top:4rem;
+  width:100%;
+  text-align:left;
+  z-index:2;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.skills-title{
+  padding: 10px;
+  font-family:'Handjet',cursive;
+  font-size:2.5rem;
+  text-align: center;
+  color:#fff;
+  margin-bottom:1rem;
+  position: relative;
+  z-index: 0;
+  width: 200px;
+  height: 150px;
+  border-radius: 2px;
+  overflow: hidden;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  font-weight: bold;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    left: -50%;
+    top: -50%;
+    width: 200%;
+    height: 200%;
+    background-color: #399953;
+    background-repeat: no-repeat;
+    background-size: 50% 50%, 50% 50%;
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+    background-image: linear-gradient(#4d4d4d, #4d4d4d), linear-gradient(#919191, #919191), linear-gradient(#732c85, #732c85), linear-gradient(#292929, #292929);
+    animation: rotate 4s linear infinite;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 3px;
+    top: 3px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    background: black;
+    border-radius: 3px;
+  }
+}
+
+.skills-graph{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+
+.skill{
+  display:flex;
+  flex-direction:column;
+}
+
+.skill-name{
+  font-family:'Handjet',cursive;
+  font-size:1rem;
+  color:#fff;
+  margin-bottom:0.3rem;
+}
+
+.skill-bar{
+  padding: 0px;
+  width:100%;
+  height:8px;
+  background: #000000;
+  overflow:hidden;
+
+  outline: 1px solid white;
+}
+
+.skill-fill{
+  margin: 1px;
+  height:70%;
+  width:0;
+
+  background-image:
+
+    linear-gradient(90deg, #000 45%, #be69d1 55%);
+
+  background-size: 16px 16px;
+
+  transition: width 1.8s steps(30,end);
+}
+
+/* EFCTO CANVAS 2 */
+
+.footer_hover-effect {
+  top: 2px;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.footer_hover-effect canvas {
+  position: absolute;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  top: 2px;
+  left: 5px;
+  pointer-events: none;
+}
+
+
+
+.section-titles-canvas {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border: solid 3px yellow;
+}
+
+:root {
+  --crouch-ratio: 0.9; 
+  --jump-height: -180%;
+  --easing: ease-in-out;
+  --spin-angle: 180deg;
+  --font-size: 3rem;
+  --color-text: #000;
+  --color-highlight: #4ad4;
+  --color-bg: #111;
+  --chaos-percentage: 0%;
+}
+
+.text {
+  cursor: none;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: var(--font-size);
+  text-align: center;
+}
+
+.word, .letter {
+  display: inline-block;
+  animation: jump var(--easing) infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes jump {
+  0%, 20% {
+    transform: scaleY(1);
+  }
+  25% {
+    transform: scaleY(var(--crouch-ratio));
+  }
+  30% {
+    transform: scaleY(var(--crouch-ratio)) translateY(var(--jump-height)) rotateX(var(--spin-angle));
+    background-color: var(--color-highlight);
+    padding: 0 var(--chaos-percentage);
+  }
+  40% {
+    transform: translateY(0) scaleY(1) rotateX(0deg);
+  }
+  45% {
+    transform: scaleY(var(--crouch-ratio));
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@media (max-width: 767px) {
+  .footer_hover-effect canvas {
+    height: 50vh;
+    top: 15vh;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="main-content">
+  <div class="hero">
+    <canvas id="gridCanvas"></canvas>
+    <h1>AMSantamarta</h1>
+    <p class="text" id="jumpText"></p>
+
+  </div>
+
+  <section class="section-3d">
+    <div class="title-band">
+        <h2 class="section-title">3D</h2>
+        <div class="section-text">Modelado, animación y renderizado 3D</div>
+    </div>
+    <div class="content">
+
+          <div class="gallery-3d">
+            <img id="slideshow-3d-image" src="img/img_portfolio/img_3d/1.png" alt="">
+          </div>
+
+          <button class="btn-productos">
+    <span>MIS PRODUCTOS</span>
+  </button>
+
+
+    </div>
+  </section>
+
+  <section class="section-video">
+
+    <div class="title-band">
+        <h2 class="section-title">VIDEO</h2>
+        <div class="section-text">Producción y edición de video y animación</div>
+    </div>
+
+    <div class="content">
+
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/-aMXOAzqo4w?si=YPQpsznfTdmGcWKf" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/3Nl4LBI4Q60?si=7Vdv7d_coEJDoZLY" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+      </div>
+    <!-- <div class="image-stack">
+        <img src="image4.png">
+        <img src="image5.png">
+        <img src="image6.png">
+      </div> -->
+      <div class="general-text">
+        He pasado gran parte de los últimos años haciendo trabajos de vídeo y animaciones o participando en proyectos con Tomás Mugeta, Sergio Fidalgo, Manuel Benito e Illán Álvarez. Mi especialidad es la edición, aunque trabajar en muchos proyectos con los medios justos y aprendiendo por el camino también me ha instado a exprimir el equipo disponible lo máximo posible. Desde grabar cámara en mano, a hacer toda la postproducción.
+      </div>
+          
+    </div>
+
+  </section>
+
+      <!-- SECCION DESIGN -->
+
+  <section class="section-design">
+
+    <div class="title-band">
+        <h2 class="section-title">DESIGN</h2>
+        <div class="section-text">
+          Diseño gráfico y visual
+        </div>
+    </div>
+
+    <div class="content">
+
+      <div class="design-layout">
+
+        <div class="personaje-wrapper">
+          <div class="player"></div>
+        </div>
+
+        
+
+        <!-- <div class="design-custom-text">
+          THIS IS MY DESIGN WORLD
+        </div>
+
+
+        <div class="design-hero">
+          <img src="img/tipografia_highfont_2.png" alt="Hero Design">
+        </div> -->
+
+        <!-- Dos columnas -->
+        <div class="design-columns">
+
+         <!-- COLUMNA DERECHA -->
+          <div class="design-right">
+            <img id="slideshow-image" src="img/img_portfolio/img_portadas/japan_trapis.png" alt="">
+          </div>
+      <div class="general-text">
+        He hehco un poco de todo, más de 9 páginas web aunque por desgracia la mayoría ya no están online, identidad corporativa y logotipos, cartelería y portadas e ilustración digital.
+      </div>
+          <!-- COLUMNA IZQUIERDA -->
+          <div class="design-left">
+
+                
+
+            <!-- Imagen scroll infinito -->
+            <div class="scroll-wrapper-1">
+              <div class="scroll-track-1">
+                <img src="img/tipo_high_1.png" alt="">
+                <img src="img/tipo_high_2.png" alt="">
+                <img src="img/tipo_high_3.png" alt="">
+                <img src="img/tipo_high_1.png" alt="">
+              </div>
+
+            </div>
+
+            <!-- Imagen grande debajo -->
+            <div class="scroll-wrapper-2">
+              <div class="scroll-track-2">
+                <img src="img/img_portfolio/img_design/rappers_big_1.png" alt="">
+                <img src="img/img_portfolio/img_design/rappers_big_2.png" alt="">
+                <img src="img/img_portfolio/img_design/rappers_big_3.png" alt="">
+                <img src="img/img_portfolio/img_design/rappers_big_4.png" alt="">
+                <img src="img/img_portfolio/img_design/rappers_big_5.png" alt="">
+                <img src="img/img_portfolio/img_design/rappers_medium_1.png" alt="">
+                <img src="img/img_portfolio/img_design/rappers_medium_2.png" alt="">
+                <img src="img/img_portfolio/img_design/rappers_medium_3.png" alt="">
+                <img src="img/img_portfolio/img_design/rappers_medium_4.png" alt="">
+                <img src="img/img_portfolio/img_design/rappers_medium_5.png" alt="">
+                <img src="img/img_portfolio/img_design/rappers_medium_6.png" alt="">
+                <img src="img/img_portfolio/img_design/rappers_small_1.png" alt="">
+                <img src="img/img_portfolio/img_design/rappers_small_2.png" alt="">
+                <img src="img/img_portfolio/img_design/rappers_big_1.png" alt="">
+              </div>
+            </div>
+<div class="general-text">
+          Me flipa hacer stickers de raperos! <br> Le he hechado muchísimas horas a crear dibujos vectoriales, me flipa el diseño vectorial y la ilustración limpia desde siempre, basada en las formas y los trazos, el diseño soviético, moebius, el arte oriental... de los curros que más me llenan es la vectorización de una serie de mapas para un atlas geográfico que ha publicado mi padre.
+      </div>
+          </div>
+
+        </div>
+        
+      </div>
+
+
+      <!-- <div class="image-stack">
+        <img src="image7.png">
+        <img src="image8.png">
+        <img src="image9.png">
+      </div>  -->
+
+    </div>
+
+  </section>
+
+  <section class="section-about">
+    <div class="title-band">
+        <h2 class="section-title">ABOUT</h2>
+        <div class="section-text">
+          Usted es el señor Anderson
+        </div>
+    </div>
+
+    <div class="content">
+      <div class="about-container">
+        <div class="about-row">
+          <div class="about-wrapper">
+            <img src="img/asturias.jpg" alt="">
+            <div class="about-text">
+              MUNDO INTERIOR/ELECTROQUÍMOCA: "Nací y me crié en la ciudad de Oviedo. Desde muy pequeño tenía una gran pasión por dibujar, sin embargo en la adolescencia ya me llamaba mucho más la atención los formatos digitales como la animación, los videojuegos etc. (seguramente por nacer en los 90, cuando comenzaba a implementarse el mundo digital en nuestro dia a dia) a partir de los 20 años estudié diseño web y comencé a dedicarme a la música y al audiovisual en general."
+            </div>
+          </div>
+
+          <div class="about-wrapper">
+            <div class="about-text">
+              EMPATÍA/DRAMA: "No estás aquí para oir solo cosas bonitas y lo bueno que soy en todo, tú quieres el salseo, pero no te lo voy a dar porque desde luego no me fuí de casa a los 18 con un plan exagerado, ni dejé la carrera de filología a medias, ni pasé demasiado tiempo jugando videojuegos o de risas con los colegas."
+            </div>
+            <img src="img/negativo.jpg" alt="">
+          </div>
+
+          <div class="about-wrapper">
+            <img src="img/positivo.jpg" alt="">
+            <div class="about-text">
+              AUTORIDAD/RETÓRICA: "Todo el mundo tiene que mostrar lo mejor de sí mismo! Por eso te diré que el ser autodidacta me ha hecho "aprender a aprender", creo que se me da bien aprender rápido nuevas habilidades relacionadas con el campo audiovisual, soy bastante perfeccionista con mi trabajo dentro de mis capacidades."
+            </div>
+          </div>
+        </div>
+
+    <!-- NUEVA SUBSECCIÓN SKILLS -->
+    <div class="about-row">
+
+
+
+      <div class="skills-section">
+        <div class="skills-title">SKILLS</div>
+          <div class="skills-graph">
+            <div class="skill">
+              <div class="skill-name">Blender</div>
+              <div class="skill-bar"><div class="skill-fill" data-width="65%"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-name">Photoshop</div>
+              <div class="skill-bar"><div class="skill-fill" data-width="60%"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-name">Premier</div>
+              <div class="skill-bar"><div class="skill-fill" data-width="45%"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-name">Davinci</div>
+              <div class="skill-bar"><div class="skill-fill" data-width="55%"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-name">Ableton</div>
+              <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-name">Freehand MX</div>
+              <div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-name">Illustrator/InDesign</div>
+              <div class="skill-bar"><div class="skill-fill" data-width="25%"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-name">Unity</div>
+              <div class="skill-bar"><div class="skill-fill" data-width="15%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  </section>
+
+  
+</div>
+
+<section class="footer">
+  <p>© 2026 - Esta web ha sido construida con un montón de botellas de cerveza de trigo importadas de bélgica, a tu salud!</p>
+    <!-- <div class="footer_hover-effect"></div> -->
+  </section>
+
+<script>
+
+/* === HOME GRID + EFECTOS CUBITOS + EXPLOSIÓN EN H1 === */
+
+const canvas = document.getElementById("gridCanvas");
+const ctx = canvas.getContext("2d");
+let size = 12;
+let cols, rows;
+let cubes = [];
+const colors = ["255,255,255","100,220,220","180,100,255","255,220,100","221,42,42"];
+let effects = [];
+let mouse = {x:-100,y:-100};
+canvas.style.cursor = 'none';
+canvas.addEventListener("mousemove", e=>{ mouse.x = e.clientX; mouse.y = e.clientY; });
+
+const h1 = document.querySelector(".hero h1");
+function getH1Bounds(){ const rect = h1.getBoundingClientRect(); return {x:rect.left, y:rect.top, width:rect.width, height:rect.height}; }
+
+function resizeCanvas(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  cols = Math.floor(canvas.width/size);
+  rows = Math.floor(canvas.height/size);
+  cubes = [];
+  for(let x=0;x<cols;x++){
+    for(let y=0;y<rows;y++){
+      cubes.push({x:x*size, y:y*size, alpha:0, target:0, color: colors[Math.floor(Math.random()*colors.length)]});
+    }
+  }
+}
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+function addCursorCube(x,y){ effects.push({x:x-(x%size), y:y-(y%size), alpha:1, color: colors[Math.floor(Math.random()*colors.length)], type:"cursor"}); }
+function addStar(){ effects.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, alpha:1, color:colors[Math.floor(Math.random()*colors.length)], type:"star", life:50+Math.random()*50}); }
+function addDrop(){ effects.push({x:Math.random()*canvas.width, y:-size, alpha:1, color:colors[Math.floor(Math.random()*colors.length)], type:"drop", speed:2+Math.random()*2}); }
+function explode(x,y){ for(let i=0;i<6;i++){ effects.push({x:x,y:y,alpha:1,color:colors[Math.floor(Math.random()*colors.length)], type:"mini", vx:(Math.random()-0.5)*3, vy:(Math.random()-0.5)*3, life:15+Math.random()*10}); } }
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const h1Bounds = getH1Bounds();
+
+  cubes.forEach(cube=>{
+    if(Math.random()<0.000004 && cube.target===0){ cube.target=0.6; cube.color=colors[Math.floor(Math.random()*colors.length)]; }
+    cube.alpha += (cube.target-cube.alpha)*0.02;
+    if(cube.alpha>0.55) cube.target=0;
+    ctx.strokeStyle="rgba(120,120,120,0.12)";
+    ctx.strokeRect(cube.x,cube.y,size,size);
+    if(cube.alpha>0.01){ ctx.fillStyle = `rgba(${cube.color},${cube.alpha})`; ctx.fillRect(cube.x,cube.y,size,size); }
+  });
+
+  if(mouse.x>0 && mouse.y>0 && Math.random()<0.5) addCursorCube(mouse.x,mouse.y);
+  if(Math.random()<0.002) addStar();
+  if(Math.random()<0.002) addDrop();
+
+  effects.forEach((e,i)=>{
+    if(e.type==="drop") e.y += e.speed;
+    if(e.type==="mini"){ e.x+=e.vx; e.y+=e.vy; e.alpha*=0.85; e.life--; }
+    else if(e.type==="star" || e.type==="cursor") e.alpha*=0.95;
+
+    if(e.type==="drop"){
+      if(e.x>=h1Bounds.x && e.x<=h1Bounds.x+h1Bounds.width &&
+         e.y>=h1Bounds.y && e.y<=h1Bounds.y+h1Bounds.height){
+           explode(e.x,e.y);
+           effects.splice(i,1);
+           return;
+      }
+    }
+
+    ctx.fillStyle = `rgba(${e.color},${e.alpha})`;
+    ctx.fillRect(e.x,e.y,size,size);
+
+    if((e.alpha<0.05 && e.type!=="drop") || (e.type==="mini" && e.life<=0) || e.y>canvas.height+size) effects.splice(i,1);
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+
+
+
+
+/* ANIMACION TITULOS SECCION */
+
+const sections = document.querySelectorAll("section");
+window.addEventListener("scroll", ()=>{
+  sections.forEach(section=>{
+    const title = section.querySelector(".section-title");
+    const rect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    if(rect.top<windowHeight && rect.bottom>0){
+      const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+      title.style.transform = `translateX(${(progress*500)-150}%)`;
+    }
+  });
+});
+
+/* ANIMACIÓN DE SKILLS */
+const skillsSection = document.querySelector(".skills-section");
+const skillFills = document.querySelectorAll(".skill-fill");
+
+const skillsObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      skillFills.forEach(fill=>{
+        fill.style.width = fill.dataset.width;
+      });
+      skillsObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:0.4});
+
+skillsObserver.observe(skillsSection);
+
+/* === FUNCION SLIDESHOW REUTILIZABLE === */
+
+function createSlideshow(imageArray, elementId, intervalTime = 3000) {
+  let currentIndex = 0;
+  const slideshow = document.getElementById(elementId);
+
+  if (!slideshow) return;
+
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % imageArray.length;
+    slideshow.src = imageArray[currentIndex];
+  }, intervalTime);
+}
+
+
+/* === SLIDESHOW 3D SECTION === */
+
+createSlideshow(
+  [
+    "img/img_portfolio/img_3d/1.jpg",
+    "img/img_portfolio/img_3d/2.jpg",
+    "img/img_portfolio/img_3d/4.jpg",
+    "img/img_portfolio/img_3d/3.jpg",
+    "img/img_portfolio/img_3d/5.jpg",
+    "img/img_portfolio/img_3d/6.jpg",
+    "img/img_portfolio/img_3d/7.jpg",
+    "img/img_portfolio/img_3d/orange.jpg"
+/* ===    "img/img_portfolio/img_3d/1.png",
+    "img/img_portfolio/img_3d/1.png",
+    "img/img_portfolio/img_3d/1.png",=== */
+
+  ],
+  "slideshow-3d-image",
+  4000
+);
+
+
+/* === SLIDESHOW DESIGN SECTION === */
+
+createSlideshow(
+  [
+    "img/img_portfolio/img_ilustracion/suite.png",
+    "img/img_portfolio/img_design/carteles_1.png",
+    "img/img_portfolio/img_design/ds_1.png",
+    "img/img_portfolio/img_design/identidad1.jpg",
+    "img/img_portfolio/img_design/iconos1.jpg",
+    "img/img_portfolio/img_design/web1.png",
+    "img/img_portfolio/img_design/web2.png",
+    "img/img_portfolio/img_design/web3.jpg",
+    "img/img_portfolio/img_design/exxxtra1.jpg",
+    "img/img_portfolio/img_design/monigotes_sloan.jpg",
+    "img/img_portfolio/img_design/tupac.jpg",
+    "img/img_portfolio/img_design/notorious.jpg",
+    "img/img_portfolio/img_portadas/japan_trapis.png"
+  ],
+  "slideshow-image",
+  3000
+);
+
+const highlightColors = [
+  "255,255,255",
+  "100,220,220",
+  "180,100,255",
+  "255,220,100",
+  "221,42,42"
+];
+
+const text = "Welcome to my audiovisual universe.";
+const baseDuration = 3;
+const container = document.getElementById("jumpText");
+const words = text.split(" ");
+
+words.forEach((word, wordIndex) => {
+  const wordSpan = document.createElement("span");
+  wordSpan.classList.add("word");
+  wordSpan.style.animationDelay = `${wordIndex * baseDuration}s`;
+  wordSpan.style.animationDuration = `${baseDuration * words.length}s`;
+
+  [...word].forEach((letter, letterIndex) => {
+    const letterSpan = document.createElement("span");
+    letterSpan.classList.add("letter");
+    letterSpan.style.animationDelay = `${wordIndex * baseDuration}s`;
+    letterSpan.style.animationDuration = `${letterIndex * baseDuration + wordIndex}s`;
+    letterSpan.textContent = letter;
+    wordSpan.appendChild(letterSpan);
+  });
+
+  container.appendChild(wordSpan);
+  container.appendChild(document.createTextNode(" "));
+
+  // --- color random por palabra ---
+  function randomizeWordColor() {
+    const randomColor = highlightColors[Math.floor(Math.random() * highlightColors.length)];
+    wordSpan.querySelectorAll(".letter").forEach(letter => {
+      letter.style.setProperty("--color-highlight", `rgb(${randomColor})`);
+    });
+  }
+
+  // color inicial
+  randomizeWordColor();
+
+  // cada vez que la animación de la primera letra de la palabra se repite
+  const firstLetter = wordSpan.querySelector(".letter");
+  firstLetter.addEventListener("animationiteration", randomizeWordColor);
+});
+
+
+</script>
+</body>
+</html>
