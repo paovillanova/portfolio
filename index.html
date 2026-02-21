@@ -802,9 +802,10 @@ border: solid 3px black;
   line-height:1.6;
   margin-top:30px;
   display:flex;
+  flex-direction: row;
   justify-content:center;
   align-items:center;
-
+border: 1px yellow solid;
   
 }
 
@@ -1028,6 +1029,158 @@ padding-right: 60px;
 }
 
 @media (max-width: 767px) {
+
+.title-band{
+  position:relative;
+  top:0%;
+  left:0;
+  width:100%;
+  height:14vw;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  z-index:1;
+  background:#111;
+  /* border: double 2px lightcyan; */
+}
+
+/* TITULOS */
+
+.section-title{
+  display: none;
+  position:relative;
+  font-family:'Anton', sans-serif;
+  font-size:12vw;
+  white-space:nowrap;
+  transform:translateX(-100%);
+  transition:transform 0.3s ease-out;
+  z-index:2;
+  text-align: left;
+  padding-left:5vw;
+  /* border: dotted 2px red; */
+}
+
+/* TEXTOS TITULOS */
+
+.section-text{
+  position:absolute;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  font-family:'Handjet', cursive;
+  font-size:1.3rem;
+  color:#fff;
+  z-index:3;
+  pointer-events:none; /* para que no interfiera con hover de imágenes */
+  /* border: dotted 2px darkmagenta; */
+}
+
+.about-wrapper{
+  padding-right: 20px;
+  padding-left: 20px;
+  width: 100%;
+  font-size:1.2rem;
+  line-height:1.6;
+  margin-top:30px;
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+border: 1px yellow solid;
+  
+}
+
+.scroll-wrapper-1 {
+  overflow: hidden;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 4px;
+  position: relative;
+            /*  border: dotted 2px red; */
+
+}
+
+.scroll-wrapper-2 {
+  overflow: hidden;
+  width: 100%;
+  height: 140px;
+  margin-bottom: 4px;
+  position: relative;
+  padding-bottom: 20px;
+              border-bottom: dashed 1px floralwhite; 
+             
+
+background-color: #000000;
+opacity: 0.9;
+background: radial-gradient(circle, transparent 20%, #000000 20%, #000000 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #000000 20%, #000000 80%, transparent 80%, transparent) 20px 20px, linear-gradient(#2c2c2c 1.6px, transparent 1.6px) 0 -0.8px, linear-gradient(90deg, #2c2c2c 1.6px, #000000 1.6px) -0.8px 0;
+background-size: 40px 40px, 40px 40px, 20px 20px, 20px 20px;
+
+}
+
+.personaje-wrapper {
+  width: 92%;
+  overflow: hidden;
+  margin: 0 auto;
+  border-bottom: dashed 1px floralwhite;
+      /* border: dotted 2px green; */
+}
+
+.design-hero img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+    border: solid 1px hotpink;
+}
+
+.design-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+    justify-content:center;
+  align-items:center;
+
+
+
+}
+
+.design-left {
+
+  width: 92%;
+}
+
+.design-right {
+  padding-top: 20px;
+             
+  width: 92%;
+
+  padding: 15px;
+background-size: 8px 8px;
+background-image: repeating-linear-gradient(45deg, #353434 0, #353434 0.8px, #050505 0, #050505 50%);
+
+      /*  border: dotted 2px yellow; */
+}
+
+.player {
+    position: relative;
+    bottom: 0px;
+
+    width: 35px;
+    height: 35px;
+
+    background-image: url("img/runnin_spritesheet_horizontal.png"); /* cambia la ruta */
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+        /*  border: dotted 2px limegreen; */
+
+    /* Animación del spritesheet */
+    animation: 
+      play 1s steps(14) infinite,
+      move 15s linear infinite;
+  }
+
+
   .footer_hover-effect canvas {
     height: 50vh;
     top: 15vh;
@@ -1127,7 +1280,7 @@ padding-right: 60px;
 
          <!-- COLUMNA DERECHA -->
           <div class="design-right">
-            <img id="slideshow-image" src="img/img_portfolio/img_portadas/japan_trapis.png" alt="">
+            <img id="slideshow-image" src="img/img_portfolio/img_design/portadas1.jpg" alt="">
           </div>
       <div class="general-text">
         He hehco un poco de todo, más de 9 páginas web aunque por desgracia la mayoría ya no están online, identidad corporativa y logotipos, cartelería y portadas e ilustración digital.
